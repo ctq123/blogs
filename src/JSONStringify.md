@@ -18,7 +18,7 @@
 
 ## JSON.stringify语法
 
-```js
+```javascript
 JSON.stringify(value[, replacer [, space]])
 ```
 #### 参数
@@ -36,7 +36,7 @@ JSON.stringify(value[, replacer [, space]])
 **标签：边界值** 
 对于undefined，function，symbol值，在序列化过程中，不同的结构返回的结果不一样
 
-```js
+```javascript
 var obj = {
   x: undefined, 
   y: function() {}, 
@@ -49,7 +49,7 @@ JSON.stringify(obj);
 
 那么假设它们作为一个数组元素，序列化的结果又是怎样呢？
 
-```js
+```javascript
 var arr = [
   undefined, 
   function() {}, 
@@ -61,7 +61,7 @@ JSON.stringify(arr);
 * undefined、函数、 symbol 值，出现在数组中时被转换成 null
 
 再问，三个元素单独转换时，序列化的结果是什么呢？
-```js
+```javascript
 JSON.stringify(undefined);
 // undefined
 
@@ -83,7 +83,7 @@ JSON.stringify(Symbol("1"));
 #### 第二大特性
 **标签：toJSON** 
 转换值如果有 toJSON() 方法，该方法定义什么值将被序列化
-```js
+```javascript
 var obj = {
   id: 1,
   name: 'Alan',
@@ -112,7 +112,7 @@ JSON.stringify(obj);
 
 **思考** 
 * 假设toJSON返回的是一个函数，结果输出的应该是什么？
-```js
+```javascript
 var obj = {
   id: 1,
   name: 'Alan',
@@ -133,7 +133,7 @@ JSON.stringify的第二大特性：
 **标签：顺序** 
 由于受第一大特性的影响，健值对中某些值会被忽略，因此，非数组对象的属性不能保证以特定的顺序出现在序列化后的字符串中
 
-```js
+```javascript
 var obj = {
   b: undefined,
   c: 'c',
@@ -150,7 +150,7 @@ JSON.stringify(obj);
 #### 第四大特性
 **标签：对象**
 * 布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值
-```js
+```javascript
 var arr = [
   new Number(1), new String("false"), new Boolean(false)
 ]
@@ -161,7 +161,7 @@ JSON.stringify(arr);
 #### 第五大特性
 **标签：相互引用，异常**
 * 对包含循环引用的对象（对象之间相互引用，形成无限循环）执行此方法，会抛出错误
-```js
+```javascript
 var obj1 = {
   a: ''
 }
@@ -182,7 +182,7 @@ JSON.stringify(obj1);
 #### 第六大特性
 **标签：symbol忽略**
 * 所有以 symbol 为key属性都会被完全忽略掉，即便 replacer 参数中强制指定包含了它们
-```js
+```javascript
 var obj = {
   a: '1',
   [Symbol.for("foo")]: "foo",
@@ -199,7 +199,7 @@ JSON.stringify(obj, function(k, v) {
 #### 第七大特性
 **标签：Date**
 * Date 日期调用了 toJSON() 将其转换为了 string 字符串（同Date.toISOString()），因此会被当做字符串处理
-```js
+```javascript
 var obj = {
   time: new Date('2021-08-10'),
 }
@@ -211,7 +211,7 @@ JSON.stringify(obj);
 #### 第八大特性
 **标签：NaN，Infinity**
 * NaN 和 Infinity 格式的数值及 null 都会被当做 null
-```js
+```javascript
 var obj = {
   nan: NaN,
   ini: Infinity,
@@ -224,7 +224,7 @@ JSON.stringify(obj);
 #### 第九大特性
 **标签：NaN，Infinity**
 * 其他类型的对象，包括 Map/Set/WeakMap/WeakSet，仅会序列化可枚举的属性，不可枚举的值会被忽略
-```js
+```javascript
 var obj = {
   x: { value: 'x', enumerable: false },
   y: { value: 'y', enumerable: true }
@@ -239,7 +239,7 @@ JSON.stringify(kk);
 replacer可以是一个数组，也可以是一个函数
 
 #### 作为数组时，数组的值代表将被序列化的属性，即要保留的值，其他的会被忽略
-```js
+```javascript
 var obj = {
   x: 'x',
   y: 'y',
@@ -250,7 +250,7 @@ JSON.stringify(obj, ['x', 'y']);
 ```
 那假设为指定一个会默认被忽略的属性会怎样呢？如undefined
 
-```js
+```javascript
 var obj = {
   x: 'x',
   y: 'y',
@@ -264,7 +264,7 @@ JSON.stringify(obj, ['x', 'y', 'w']);
 
 #### 作为函数时，它有两个参数key和value，它们都会被序列化
 通俗点讲，就是让我们自定义JSON.stringify序列化函数
-```js
+```javascript
 var obj = {
   x: 'x',
   y: 'y',
@@ -286,13 +286,13 @@ JSON.stringify(obj, function(k, v) {
 space用于控制字符串的缩进函数，用于美化JSON格式。如果是一个数字, 则在字符串化时每一级别会比上一级别缩进多这个数字值的空格（最多10个空格）；如果是一个字符串，则每一级别会比上一级别多缩进该字符串（或该字符串的前10个字符）
 
 曾经有遇到过这样一种场景，后端返回一个请求数据，要求将请求数据显示在文本输入框中。要求美化它的格式。
-```js
+```javascript
 var respJSON = {"code":200,"msg":"success","data":{ "total": 10, "rows": [] },"errors":null,"status":200}
 // 直接显示将会出现很乱的情况，如下：
 ```
 ![图片](https://cdn.poizon.com/node-common/dcbc997f3b8d97640c327ccfdaf9be3b.png)
 
-```js
+```javascript
 // 可以利用第三个参数进行美化
 JSON.stringify(respJSON, null, '\t')
 // 或者
@@ -304,7 +304,7 @@ JSON.stringify(respJSON, null, 4)
 
 ## JSON.parse语法
 
-```js
+```javascript
 JSON.parse(text[, reviver])
 ```
 
@@ -318,7 +318,7 @@ JSON.parse(text[, reviver])
 ### JSON.parse特性
 **标签：json规范**
 * JSON.parse() json需符合规范，不允许用逗号作为结尾
-```js
+```javascript
 JSON.parse("[1, 2, ]");
 // 异常，逗号结尾
 
@@ -335,7 +335,7 @@ JSON.parse('{a: 1}');
 #### 第一大特性
 **标签：顺序**
 指定了reviver函数之后，会逐层地去解析返回的值，它会从最最里层的属性开始，一级一级地往外去解析，最终达到顶层。有点类似于koa中洋葱模型的后半段，从里往外去解析。
-```js
+```javascript
 var objStr = "{\"b\":{\"c\":\"2\"}}"
 JSON.parse(objStr, function(k, v) { 
   console.log(k); 
@@ -347,7 +347,7 @@ JSON.parse(objStr, function(k, v) {
 #### 第二大特性
 **标签：undefined**
 * 指定了reviver函数之后，如果返回的是undefined，当前属性会从所属对象中删除
-```js
+```javascript
 var objStr = "{\"a\":{\"aa\":1},\"b\":[null, null]}"
 JSON.parse(objStr)
 // { a: {aa: 1}, b: [null, null] }
@@ -367,7 +367,7 @@ JSON.parse(objStr, function(k, v) {
 #### 第三大特性
 **标签：顶层**
 * 当遍历到顶层的值时，传入 reviver 函数的参数key值是一个空字符串""，value值是解析完成的值
-```js
+```javascript
 var objStr = "{\"b\": 1}"
 JSON.parse(objStr, function(k, v) { 
   console.log(k); 
