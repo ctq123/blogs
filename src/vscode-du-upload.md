@@ -42,8 +42,7 @@
 + 实现一键上传文件到CDN
 + 实现文件的预览功能
 
-`<video id="video" controls="" preload="none"><source id="mp4" src="${url}"></video>`
-
+<video id="video" width="400" height="300" controls="" preload="none"><source id="mp4" src="https://cdn.poizon.com/node-common/8e93aa1202772b186b610d8fa402cf5a.mov"></video>
 ### 一键上传文件到CDN
 #### 思路
 要实现快捷上传到CDN的功能，首先需要自定义快捷命令或自定义右键菜单，其次出发命令后需要唤起弹窗供用户选择要上传的文件，然后将文件上传到CDN上，最后将路径显示在当前鼠标位置即可。
@@ -86,6 +85,10 @@
 配置的含义上面标注得很清楚了，这样自定义右键的菜单就完成了。
 
 **2）唤起弹窗**
+
+首次使用会自动转跳到配置页面，引导用户进行相关的配置，如图：
+
+![图片](https://cdn.poizon.com/node-common/2293c406ce99ae0b059bc90899b4d922.png)
 
 接下来通过设置监听extension.du.upload命令回调函数，调用vscode.window.showOpenDialog即可唤起用户本机的文件选择弹框，如下
 ![图片](https://cdn.poizon.com/node-common/dd105e32d8db471aa8303dd5d7ec428e7975da314e243d3a6479edd353838a8b.png)
