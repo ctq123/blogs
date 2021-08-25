@@ -106,14 +106,12 @@
 上传成功之后，我们可以拿到对应的url了，不过在node-fetch中拿不到对应的返回url，浏览器中是可以的，这里需要自行拼接url。通过判断它是否上传成功状态来决定返回拼接好的url，还是返回null。
 
 ```javascript
-....
-const res = await fetch(ossInfo.ossHost, options);
+const res = await fetch(host, options);
 if (res.ok) {
-  return `${ossInfo.host}/${key}`;
+  return `${host}/${key}`;
 } else {
   return null;
 }
-...
 ```
 
 **4）路径回填**
@@ -205,7 +203,7 @@ if (cursorPosition >= urlBeginIndex && cursorPosition <= urlEndIndex) {
   return new vscode.Hover(markdown);
 ```
 
-由于鼠标悬浮窗口最终会合并所有的MarkdownString，比如你定义了自己的MarkdownString内容A，但假如它内部有内容B,最终显示的内容会成为B+A，也就是说你无法完全自定义自己的悬浮窗口内容，至少都会带上它内部的内容。
+由于鼠标悬浮窗口最终会合并所有的MarkdownString，比如你定义了自己的MarkdownString内容A，但假如它内部有内容B,最终显示的内容会成为B+A，也就是说你无法完全自定义自己的悬浮窗口内容，至少都会带上它内部默认的内容。
 
 ![图片](https://cdn.poizon.com/node-common/5d749d85538a470d08e51f4187ac7a6f2a568a8700756ffb7e1566bcf0f4c3d1.png)
 
@@ -215,7 +213,7 @@ if (cursorPosition >= urlBeginIndex && cursorPosition <= urlEndIndex) {
 
 这里我想到的是能不能自定义悬浮窗口，目前我所了解到的都是通过MarkdownString方式创建，能不能通过HTML之类的创建鼠标悬浮窗口，后续还需好好摸索一番。
 
-至此，我们就实现了文件的预览功能。
+至此，我们基本实现了预先设想的目标：一键上传和预览功能。日常工作中，如果你也想用这个便捷的工具，可以在商店中直接输入poizon或者dewu即可搜索到这个插件。
 
 ## 未来展望
 
