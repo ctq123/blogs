@@ -352,7 +352,7 @@ required是验证必填的属性列表，不填表示不验证，属性突然的
                 "type": "string"
             }
         },
-        "required": ["country", province", "city", "region"]
+        "required": ["country", "province", "city", "region"]
     },
   },
   "required": [ "id", "name" ]
@@ -448,7 +448,7 @@ required是验证必填的属性列表，不填表示不验证，属性突然的
                 "type": "string"
             }
         },
-        "required": ["country", province", "city", "region"]
+        "required": ["country", "province", "city", "region"]
     },
   },
   
