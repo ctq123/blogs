@@ -205,9 +205,9 @@ if (cursorPosition >= urlBeginIndex && cursorPosition <= urlEndIndex) {
 
 由于鼠标悬浮窗口最终会合并所有的MarkdownString，比如你定义了自己的MarkdownString内容A，但假如它内部有内容B,最终显示的内容会成为B+A，也就是说你无法完全自定义自己的悬浮窗口内容，至少都会带上它内部默认的内容。
 
-![图片](https://cdn.poizon.com/node-common/5d749d85538a470d08e51f4187ac7a6f2a568a8700756ffb7e1566bcf0f4c3d1.png)
+![图片](https://cdn.poizon.com/node-common/8f1a33685f70b4f1e3be4a75f3efa505.png)
 
-如上图红色框就属于默认内置MarkdownString，图片才是我自己定义的内容。
+如上图蓝色字体就属于默认内置MarkdownString，图片才是我自己定义的内容。
 
 同时markdown本身是支持媒体显示的，但vscode.MarkdownString暂时不支持媒体类渲染，查询了官网issue也有人遇到过相同的类型，暂时还没有解决。这里有试过加html之类的标志，但最终都不行，如果有童鞋知道解决方案，恳求告知～
 
