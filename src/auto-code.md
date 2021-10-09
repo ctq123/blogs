@@ -118,19 +118,21 @@
 5.HTML 生成引擎使用所有这些信息来生成反映结果的 HTML 标记代码。
 
 ![图片](https://cdn.poizon.com/node-common/b510a5c96c70aa76d79f6514d9c43c24.jpeg)
+<center>(图片来源网络)</center>
 
 sketch2code与国内阿里的imgcook原理上很相似，只是imgcook识别的是各种设计师的材料(Sketch/PS/Figma)并将其生成多类型的代码，功能更强大，imgcook就不一一展开介绍，读者可自行鉴赏。
 
 **2）teleporthq**
 另一款神器是[teleporthq](https://teleporthq.io/)，它与上面的sketch2code原理很相似，只是它更进一步，如图
 ![图片](https://cdn.poizon.com/node-common/46687a17e7952c061beb3d6ddfdad1e6.jpeg)
+<center>(图片来源网络)</center>
 
 产品经理一边在小黑板上画图，后面的机器一边扫描，识别并生成代码，同时实时给出预览效果。**真正做到了一边画草稿一边生成代码**，实现自动化生成代码功能。
 
 它的官网似乎与普通的可视化搭建器并没有什么不同，然而，如果仔细观察，你会发现它其实比普通的可视化搭建器更多一些东西，比如支持草图到代码，视觉API，而这些东西正是结合硬件设备实现代码实时输出必不可少的东西。
 
-目前它支持生成的目标代码有React/Vue/Angular等，如图：
-![图片](https://cdn.poizon.com/node-common/69c18aa7bb84c4271065f9d4487da1bf.png)
+目前它支持生成的目标代码有React/Vue/Angular等，更多可前往其官网https://teleporthq.io/
+<!-- ![图片](https://cdn.poizon.com/node-common/69c18aa7bb84c4271065f9d4487da1bf.png) -->
 
 ## 结论
 
@@ -140,6 +142,6 @@ sketch2code与国内阿里的imgcook原理上很相似，只是imgcook识别的�
 - 基于代码语料生成代码
 - 基于智能化生成代码
 
-无论如何发展，其本质从来没有变过，那就都是基于模型。也就是需要根据规则生成另一种规则，而这种规则之间的转变，他们的原料就是模版本身。
+无论如何发展，其本质其实从来没有变过，那就都是基于模版本身，变的只是转换规则。
 
 下一篇文章将介绍我们对自动化生成代码的实践和探索。
