@@ -98,46 +98,8 @@
 
 我们这里代码生成器也就是搭建器接受的数据类似配置化，对每种模版类型的数据是不一样的，所以需要根据模版类型分别进行判断。
 
-以列表页面为例，需要将对应的数据拆分两块，搜索栏和表格数据，首先需要对先对分页字段进行提取，然后需要将不同的字段与对应的组件进行绑定，如选择器（状态/类型），日期范围（时间/日期），数字输入框（金额/次数/数量）等；
+以列表页面为例，需要将对应的数据拆分两块，搜索栏和表格数据，首先需要对先对分页字段进行提取，然后需要将不同的字段与对应的组件进行绑定，如选择器（状态/类型），日期范围（时间/日期），数字输入框（金额/次数/数量）等；这里需要对一些字段做特殊处理，如日期范围类型组件的字段，需要由两个字段合并成一个字段，提交时再拆分成两个字段。
 
-```javascript
-Object.entries(request).forEach(([k, v]) => {
-  if (['page', 'pageNum'].some((s) => k === s)) {
-    search.pageKey = k;
-  } else if (['pageSize'].some((s) => k === s)) {
-    search.pageSizeKey = k;
-  } else {
-    if (isObject(v)) {
-      const typeObj = {
-        default: '输入框',
-        number: '数字输入框',
-        price: '数字输入框',
-        enum: '选择器',
-        date: '日期范围',
-      };
-      // 获取字段类型
-      const obj = checkFiledType(v);
-      // 将字段与组件绑定
-      obj['componentType'] = typeObj[obj.fileType] || '输入框';
-      // 处理日期字段
-      if (obj.componentType === '日期范围') {
-        if (/Start$|Begin$|End$/i.test(k)) {
-          k = k.replace(/Begin$/i, '');
-          k = k.replace(/Start$/i, '');
-          k = k.replace(/End$/i, '');
-        } else if (/^start|^end/i.test(k)) {
-          k = k.replace(/^start/i, '');
-          k = k.replace(/^end/i, '');
-        } else if (/^lt|^gt/i.test(k)) {
-          k = k.replace(/^lt/i, '');
-          k = k.replace(/^gt/i, '');
-        }
-      }
-      form[k] = obj;
-    }
-  }
-});
-```
 同理，对于表格数据，需要将字段与处理器进行绑定。
 
 数据转换器需要在实践过程中不断进行调整，才能更好的提高它的准确率。
@@ -330,6 +292,7 @@ const VueTemplate = (renderData) => `
 实现了保持足够的简单，一行命令后便输出可运行且可维护的源码，避免重复工作，提高研发效率，并且保持足够强的灵活性和扩展性，快速与传统开发模式结合。
 
 如果你们公司没有还不具备搭建器，采用的又是传统的开发模式，这个工具将非常适合你，目前支持生成Vue2/Vue3/React（https://github.com/ctq123/idou）
+
 ## 未来展望
 
 1）UI库的选择，允许用户引入其他UI库
@@ -338,7 +301,7 @@ const VueTemplate = (renderData) => `
 
 3）允许增加自定义的模版，除了四表一局（列表，表格，表单，图表，布局）扩展外，希望能处理增加自定义模版
 
-4）增加物料市场管理，实现物料共享和编辑
+4）增加物料市场管理，实现物料共享和编辑，服务拆分，需要支持vscode插件
 
 5）接通github仓库，自动上传源码（nodejs），形成整条链路的闭环。[已实现demo](https://github.com/ctq123/dslService)，但现实中肯定会遇到很多问题，比如如何解决代码冲突的问题。
 

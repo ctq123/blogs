@@ -116,7 +116,8 @@
 
 于是我赶紧试了一波，效果如下：
 ![图片](https://cdn.poizon.com/node-common/34541cc54a57cc4394fdbc4de44aafb7.png)
-给个横屏的角度，嗯嗯，我原谅你，再来个正常的吧
+左中右分别为草稿原图，识别分析图，结果html
+由于是横屏的角度，嗯嗯，我原谅你，再来个正常的吧
 ![图片](https://cdn.poizon.com/node-common/86067f9995b213ef3c446a687583af56.png)
 识别度还是不太理想呀。
 
@@ -134,12 +135,12 @@
 
 
 **2）teleporthq**
-另一款神器是[teleporthq](https://teleporthq.io/)，它与上面的sketch2code原理很相似，只是它更进一步，如图
+另一款AI智能化代码生成工具是[teleporthq](https://teleporthq.io/)，它与上面的sketch2code原理很相似，只是它更进一步，如图
 ![图片](https://cdn.poizon.com/node-common/68a658e787d11d31516b92c76f534cdf.png)
 
 产品经理一边在小黑板上画图，后面的机器一边扫描，识别并生成代码，同时实时给出预览效果。**真正做到了一边画草稿一边生成代码**，实现自动化生成代码功能，原文请前往(https://teleporthq.io/blog/we-believe-in-ai-powered-code-generation)。
 
-teleporthq它的官网似乎与普通的可视化搭建器并没有什么不同，然而，如果仔细观察，你会发现它其实比普通的可视化搭建器更多一些东西，比如支持草图到代码，视觉API，而这些东西正是结合硬件设备实现代码实时输出必不可少的东西。当然它识别草稿图的辨识度就ememem~，也支持识别Sketch类型的素材。
+teleporthq它的官网似乎与普通的可视化搭建器并没有什么不同，然而，如果仔细观察，你会发现它其实比普通的可视化搭建器更多一些东西，比如支持草图到代码，视觉API，而这些东西正是结合硬件设备实现代码实时输出必不可少的东西。当然它识别草稿图的辨识度就ememem~，除了草稿图，它也是支持识别Sketch素材的。
 
 目前它支持生成的目标代码有React/Vue/Angular等，更多可前往其官网https://teleporthq.io/
 
