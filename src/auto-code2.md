@@ -7,7 +7,9 @@
 本文主要解决的是开发效率低的问题，通过一键生成源码的方式，减少开发成本和提高效率，效果如下
 
 ![图片](https://cdn.poizon.com/node-common/777a27cad438288e1757c08519342135.gif)
-<center>输入一行命令直接生成源码</center>
+<!-- <iframe src="https://cdn.poizon.com/node-common/777a27cad438288e1757c08519342135.gif" allowfullscreen></iframe> -->
+<div align='center'>输入一行命令直接生成源码</div>
+
 ## 现状
 目前我们中后台的很多页面都很相似，这些页面大多为列表页，编辑页和详情页，也就是“四表一单”中的几个，这些页面写起来也是挺繁琐重复的事情。
 
