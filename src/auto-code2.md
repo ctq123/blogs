@@ -104,7 +104,7 @@
 ![图片](https://cdn.poizon.com/node-common/e04f11138ddadc1ba8c07dca09d423ae.png)
 搭建器([idou](https://github.com/ctq123/idou))主要功能就是输出源码，它以一份DSL作为桥梁，在UI组件和源码之间承担承上启下的角色，用户操作搭建器，操作的是DSL，在点击生成源码的时候，再根据DSL和特定的转化规则生成源码。因此从流程上，搭建器的主要功能有两大块，分别是编辑DSL和DSL转化源码。
 
-![图片](https://cdn.poizon.com/node-common/de91b9408671ce79c54315b573228b40.png)
+![图片](https://cdn.poizon.com/node-common/9cb4a6ef07801dd83109cdb3125e5cb2.png)
 涉及到的功能模块有很多，这里就不一一展开介绍，这里简单介绍下DSL转化源码过程。
 
 **DSL转化源码**
