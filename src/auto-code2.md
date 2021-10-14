@@ -6,8 +6,11 @@
 
 本文主要解决的是开发效率低的问题，通过一键生成源码的方式，减少开发成本和提高效率，效果如下
 
-![图片](https://cdn.poizon.com/node-common/777a27cad438288e1757c08519342135.gif)
+<!-- ![图片](https://cdn.poizon.com/node-common/777a27cad438288e1757c08519342135.gif) -->
 <!-- <iframe src="https://cdn.poizon.com/node-common/777a27cad438288e1757c08519342135.gif" allowfullscreen></iframe> -->
+<video id="video" controls="" preload="none" poster="https://cdn.poizon.com/node-common/2fa0a097787d514380e40c0e69ba76c0.png">
+  <source src="https://cdn.poizon.com/node-common/a8007f3351b860b21b86c0f84fed8119.mp4" type="video/mp4">
+</video>
 <div align='center'>输入一行命令直接生成源码</div>
 
 ## 现状
@@ -86,7 +89,7 @@
 **转换**：准确转化数据是自动化生成代码的关键，在不同的上下文中需要转换不同的数据。
 
 **1）识别**
-![图片](https://cdn.poizon.com/node-common/de3b131b937ce267c1dbfde61682bf04.png)
+![图片](https://cdn.poizon.com/node-common/db45e2cb16f00ca020773007e9286795.png)
 
 以识别模版类型为例，我们这里采用了三层逻辑判断，首先判断用户的指令中属否指定了类型，若用户指定了模版类型直接采用，若用户没有制定；接着根据接口名称判断页面类型，是否包含特殊关键字，若接口名称不能判断，最后再根据返回的结构进一步判断，最终若都不能识别模版类型，直接退出程序，不再往下走。
 
